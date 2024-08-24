@@ -1,0 +1,125 @@
+{
+    "reviews": [
+      {
+        "professor": "Dr. Emily Johnson",
+        "subject": "Computer Science",
+        "stars": 5,
+        "review": "Dr. Johnson is an amazing professor! Her lectures are clear, and she's always willing to help outside of class."
+      },
+      {
+        "professor": "Dr. Michael Smith",
+        "subject": "Mathematics",
+        "stars": 4,
+        "review": "Good professor with a deep understanding of the subject, but sometimes the lectures can be a bit fast-paced."
+      },
+      {
+        "professor": "Dr. Linda Brown",
+        "subject": "Physics",
+        "stars": 5,
+        "review": "Very engaging lectures and thorough explanations. Highly recommend taking her classes."
+      },
+      {
+        "professor": "Dr. James Williams",
+        "subject": "Chemistry",
+        "stars": 3,
+        "review": "The material is challenging, and the exams are tough. Dr. Williams is knowledgeable but not very approachable."
+      },
+      {
+        "professor": "Dr. Patricia Davis",
+        "subject": "Biology",
+        "stars": 4,
+        "review": "Solid professor with clear lectures. Sometimes difficult to follow the labs, but overall a good experience."
+      },
+      {
+        "professor": "Dr. John Miller",
+        "subject": "History",
+        "stars": 5,
+        "review": "Dr. Miller makes history come alive! His passion for the subject is contagious."
+      },
+      {
+        "professor": "Dr. Barbara Wilson",
+        "subject": "Literature",
+        "stars": 5,
+        "review": "Incredible professor who really cares about her students. Her feedback is always helpful."
+      },
+      {
+        "professor": "Dr. William Martinez",
+        "subject": "Philosophy",
+        "stars": 4,
+        "review": "Thought-provoking lectures, but sometimes difficult to grasp the concepts. Dr. Martinez encourages critical thinking."
+      },
+      {
+        "professor": "Dr. Elizabeth Taylor",
+        "subject": "Economics",
+        "stars": 5,
+        "review": "Very clear and concise in her teaching. Dr. Taylor is great at simplifying complex topics."
+      },
+      {
+        "professor": "Dr. Christopher Anderson",
+        "subject": "Political Science",
+        "stars": 4,
+        "review": "Great professor with a lot of real-world experience. Sometimes the lectures can be a bit dry."
+      },
+      {
+        "professor": "Dr. Sarah Thompson",
+        "subject": "Sociology",
+        "stars": 5,
+        "review": "Dr. Thompson is very engaging and makes the subject matter interesting. Highly recommend!"
+      },
+      {
+        "professor": "Dr. Mark Garcia",
+        "subject": "Psychology",
+        "stars": 4,
+        "review": "Good professor with interesting lectures. The exams can be tricky, so be prepared."
+      },
+      {
+        "professor": "Dr. Nancy Rodriguez",
+        "subject": "Anthropology",
+        "stars": 5,
+        "review": "Dr. Rodriguez is passionate about the subject and it shows in her teaching. Excellent class!"
+      },
+      {
+        "professor": "Dr. Paul Walker",
+        "subject": "Statistics",
+        "stars": 3,
+        "review": "The course is challenging, and Dr. Walker's teaching style is very technical. Not an easy class."
+      },
+      {
+        "professor": "Dr. Sandra Lee",
+        "subject": "Engineering",
+        "stars": 5,
+        "review": "Dr. Lee is an outstanding professor. Her lectures are detailed and very well-organized."
+      },
+      {
+        "professor": "Dr. David Hernandez",
+        "subject": "Environmental Science",
+        "stars": 4,
+        "review": "Interesting subject matter, but sometimes the lectures are hard to follow. Dr. Hernandez is very knowledgeable."
+      },
+      {
+        "professor": "Dr. Laura Clark",
+        "subject": "Art History",
+        "stars": 5,
+        "review": "Dr. Clark is an expert in her field. Her passion for art is evident in every lecture."
+      },
+      {
+        "professor": "Dr. Robert Young",
+        "subject": "Geography",
+        "stars": 4,
+        "review": "Great professor with interesting lectures. Sometimes the assignments are a bit overwhelming."
+      },
+      {
+        "professor": "Dr. Jennifer King",
+        "subject": "Music",
+        "stars": 5,
+        "review": "Dr. King is a fantastic professor. Her love for music makes the class very enjoyable."
+      },
+      {
+        "professor": "Dr. Charles Lopez",
+        "subject": "Law",
+        "stars": 4,
+        "review": "Challenging course with a lot of reading. Dr. Lopez is thorough but expects a lot from his students."
+      }
+    ]
+  }
+  
