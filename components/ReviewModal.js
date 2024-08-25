@@ -14,7 +14,7 @@ function ReviewModal({ closeModal }) {
             onClick={() => closeModal(false)}
           />
         </div>
-        <div class="flex justify-center">
+        <div className="flex justify-center">
           <form>
             <label for="firstName">First Name</label>
             <input id="firstName" type="text" autoComplete="off"></input>

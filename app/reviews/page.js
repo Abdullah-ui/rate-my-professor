@@ -11,9 +11,9 @@ function page() {
   return (
     <div>
       <Header></Header>
-      <div class="w-9/12 mx-auto">
+      <div className="w-9/12 mx-auto">
         <MdAddBox
-          class="ml-auto w-8 h-8 mt-3 hover:fill-slate-500 cursor-pointer"
+          className="ml-auto w-8 h-8 mt-3 hover:fill-slate-500 cursor-pointer"
           onClick={() => setOpenModal(true)}
         />
         {openModal && <ReviewModal closeModal={setOpenModal} />}
