@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import { FaSearch, FaPen } from "react-icons/fa";
 
 export default function Home() {
+<<<<<<< HEAD
   return (
     <div>
       <Header></Header>
@@ -28,4 +29,7 @@ export default function Home() {
       </div>
     </div>
   );
+=======
+  return <h1>Hello</h1>;
+>>>>>>> bcfaf53ee26556680a62b518cddd524f3af450b7
 }
