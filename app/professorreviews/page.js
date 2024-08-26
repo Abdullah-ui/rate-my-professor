@@ -5,7 +5,7 @@ import Review from "@/components/Review";
 import sampleReviews from "../../reviews.json";
 import { MdAddBox } from "react-icons/md";
 import ReviewModal from "@/components/ReviewModal";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, query } from "firebase/firestore";
 import { firestore } from "@/firebase";
 
 function Page() {
@@ -17,18 +17,21 @@ function Page() {
   const [reviews, setReviews] = useState([]);
 
   const updateReviews = async () => {
-    const docs = await getDocs(collection(firestore, "reviews"));
+    const snapshot = await query(collection(firestore, "reviews"));
+    const docs = await getDocs(snapshot)
+
     const reviewList = [];
     docs.forEach((doc) => {
       const data = doc.data;
       reviewList.push({
-        professorName: data.professorName,
-        reviewContent: data.reviewContent,
-        date: data.date,
+        // professorName: data.professorName,
+        // reviewContent: data.reviewContent,
+        // date: data.date,
+        ...doc.data(),
       });
     });
     setReviews(reviewList);
-    console.log(reviewList);
+    console.log("list: ", reviewList);
   };
 
   return (
