@@ -17,6 +17,7 @@ function ReviewModal({ closeModal }) {
           />
         </div>
         <div className="flex justify-center">
+<<<<<<< HEAD
           <form className="w-full p-3">
             <div className="mb-4">
               <label htmlFor="professor_name" className="mr-3">
@@ -45,6 +46,14 @@ function ReviewModal({ closeModal }) {
               onClick={handleSubmit}
               className="bg-blue-500 text-white p-2 rounded hover:bg-blue-600"
             >
+=======
+          <form>
+            <label for="firstName">First Name</label>
+            <input id="firstName" type="text" autoComplete="off"></input>
+            <label for="lastName">Last Name</label>
+            <input id="lastName" type="text" autoComplete="off"></input>
+            <button type="submit" onClick={(e) => handleSubmit(e)}>
+>>>>>>> 7f2340b9086c83ed99f124f09067517f7f274f56
               Submit
             </button>
           </form>
