@@ -17,12 +17,12 @@ function Header() {
             <a href="/">profAI</a>
           </h1>
         </div>
-        <nav className="hidden md:flex justify-between w-1/3 items-center text-lg">
+        <nav className="hidden md:flex justify-between w-5/12 items-center text-lg">
           <a
             className="px-3 py-2 rounded-md hover:bg-black hover:text-white transition duration-300 ease-in-out"
-            href="/reviews"
+            href="/professorreviews"
           >
-            reviews
+            professor reviews
           </a>
           <a
             className="px-3 py-2 rounded-md hover:bg-black hover:text-white transition duration-300 ease-in-out"
@@ -44,9 +44,9 @@ function Header() {
           <a
             onClick={toggleMenu}
             className="block py-2 hover:bg-black hover:text-white rounded-md transition duration-300 ease-in-out"
-            href="/reviews"
+            href="/professorreviews"
           >
-            reviews
+            professor reviews
           </a>
           <a
             onClick={toggleMenu}
