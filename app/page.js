@@ -30,7 +30,7 @@ export default function Home() {
       <footer className="text-center py-4">
         <p>
           © 2024{" "}
-          <a href="https://yourwebsite.com" className="hover:underline">
+          <a href="/" className="hover:underline">
             profAI
           </a>
           . All rights reserved.

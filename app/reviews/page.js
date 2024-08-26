@@ -62,6 +62,15 @@ function Page() {
           );
         })}
       </div>
+      <footer className="text-center py-4">
+        <p>
+          © 2024{" "}
+          <a href="/" className="hover:underline">
+            profAI
+          </a>
+          . All rights reserved.
+        </p>
+      </footer>
     </div>
   );
 }
