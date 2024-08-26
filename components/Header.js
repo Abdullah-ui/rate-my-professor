@@ -10,24 +10,6 @@ function Header() {
   };
 
   return (
-<<<<<<< HEAD
-    <div className="flex justify-between px-10 py-4 font-header items-center">
-      <div>
-        <h1 className="text-3xl">
-          <a href="/">profAI</a>
-        </h1>
-      </div>
-      <div className="flex justify-between w-1/3 items-center text-lg">
-        <a className="underline" href="/reviews">
-          reviews
-        </a>
-        <a className="underline" href="/chatbot">
-          chat
-        </a>
-        <SearchBar></SearchBar>
-      </div>
-    </div>
-=======
     <header className="bg-white shadow-md">
       <div className="flex justify-between px-10 py-4 font-header items-center">
         <div>
@@ -77,7 +59,6 @@ function Header() {
         </div>
       )}
     </header>
->>>>>>> 7f2340b9086c83ed99f124f09067517f7f274f56
   );
 }
 

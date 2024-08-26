@@ -1,9 +1,25 @@
 import { FaRegWindowClose } from "react-icons/fa";
 import { firestore } from "@/firebase";
+import { collection, addDoc } from "firebase/firestore";
+import { useState } from "react";
 
 function ReviewModal({ closeModal }) {
-  const handleSubmit = (e) => {
+  const [professorName, setProfessorName] = useState("");
+  const [reviewContent, setReviewContent] = useState("");
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    try {
+      await addDoc(collection(firestore, "reviews"), {
+        professorName: professorName,
+        reviewContent: reviewContent,
+        date: new Date().toDateString(),
+      });
+    } catch (err) {
+      console.error(err);
+    }
+    closeModal(false);
   };
 
   return (
@@ -17,8 +33,7 @@ function ReviewModal({ closeModal }) {
           />
         </div>
         <div className="flex justify-center">
-<<<<<<< HEAD
-          <form className="w-full p-3">
+          <form className="w-full p-3" onSubmit={handleSubmit}>
             <div className="mb-4">
               <label htmlFor="professor_name" className="mr-3">
                 Professor name
@@ -29,6 +44,8 @@ function ReviewModal({ closeModal }) {
                 autoComplete="off"
                 placeholder="First & Last"
                 className="w-full p-2 rounded"
+                value={professorName}
+                onChange={(e) => setProfessorName(e.target.value)}
               />
             </div>
             <div className="mb-4">
@@ -39,21 +56,14 @@ function ReviewModal({ closeModal }) {
                 placeholder="Include specifics!"
                 className="w-full p-2 h-28 rounded resize-none align-top"
                 style={{ verticalAlign: "top" }}
+                value={reviewContent}
+                onChange={(e) => setReviewContent(e.target.value)}
               ></textarea>
             </div>
             <button
               type="submit"
-              onClick={handleSubmit}
               className="bg-blue-500 text-white p-2 rounded hover:bg-blue-600"
             >
-=======
-          <form>
-            <label for="firstName">First Name</label>
-            <input id="firstName" type="text" autoComplete="off"></input>
-            <label for="lastName">Last Name</label>
-            <input id="lastName" type="text" autoComplete="off"></input>
-            <button type="submit" onClick={(e) => handleSubmit(e)}>
->>>>>>> 7f2340b9086c83ed99f124f09067517f7f274f56
               Submit
             </button>
           </form>
