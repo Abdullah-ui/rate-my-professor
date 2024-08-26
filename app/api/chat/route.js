@@ -1,16 +1,6 @@
 import { NextResponse } from "next/server";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { Pinecone } from "@pinecone-database/pinecone";
-import { marked } from 'marked';
-
-// Function to convert Markdown to HTML
-function formatMarkdownToHtml(markdownText) {
-    // Convert Markdown to HTML
-    const html = marked(markdownText);
-
-    // Return the HTML string
-    return html;
-}
 
 // system prompt that contains the guidelines on how the bot should act
 const systemPrompt = `
@@ -57,7 +47,7 @@ Focus on providing students with the best possible recommendations based on thei
 `
 
 // the list that maintains the history of the chat
-const chat_history = [
+var chat_history = [
     {
       role: "user",
       parts: [{ text: "you are an assistant that helps with searching up for professors" }],
@@ -162,5 +152,5 @@ export async function POST(req){
 
     // tried to stream response but i couldnt figure out on how to do it with gemini chat, will fix this later
     // so i just return the response as a string
-    return new NextResponse(formatMarkdownToHtml(response))
+    return new NextResponse(response)
 }

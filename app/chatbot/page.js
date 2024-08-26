@@ -1,11 +1,17 @@
 "use client";
 import Header from "@/components/Header";
 import React, { useState, useEffect, useRef } from "react";
+import ReactMarkdown from 'react-markdown';
 
 function Page() {
   const [inputValue, setInputValue] = useState("");
   const [isTagged, setIsTagged] = useState(false); // State to track if main is tagged
-  const [messages, setMessages] = useState([]); // State to store user and bot messages
+  const [messages, setMessages] = useState([
+    {
+      role: 'assistant',
+      content: `Hi! I'm the Rate My Professor support assistant. How can I help you today?`,
+    },
+  ]); // State to store user and bot messages
   const lastMessageRef = useRef(null); // Ref to keep track of the last message
 
   const handleButtonClick = (prompt) => {
@@ -31,7 +37,7 @@ function Page() {
     }
   };
 
-  const submitMessage = () => {
+  const submitMessage = async () => {
     const userMessage = inputValue.trim();
 
     // Add user's message to the conversation
@@ -43,22 +49,48 @@ function Page() {
     setInputValue(""); // Clear the input field
 
     // Simulate bot response (replace this with actual bot logic)
-    const botResponse = generateBotResponse(userMessage);
+    const botResponse = await generateBotResponse(userMessage);
 
     // Add bot's response to the conversation
     setMessages((prevMessages) => [
       ...prevMessages,
-      { type: "bot", text: botResponse },
+      { type: "assistant", text: botResponse},
     ]);
   };
 
-  const generateBotResponse = (userMessage) => {
+  const generateBotResponse = async (userMessage) => {
     // Generate a response based on the user's message
-    return `Bot response to: "${userMessage}"`; // Example response
+    const response = await fetch('/api/chat', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify([...messages, { role: 'user', content: userMessage }]),
+    });
+  
+    const reader = response.body.getReader();
+    const decoder = new TextDecoder();
+    let result = '';
+  
+    const processText = async ({ done, value }) => {
+      if (done) {
+        console.log(result);
+        return result; // Return the accumulated text when done
+      }
+  
+      const text = decoder.decode(value || new Uint8Array(), { stream: true });
+      result += text;
+  
+      // Continue reading the stream
+      return reader.read().then(processText);
+    };
+  
+    // Start reading the stream and return the final result
+    return reader.read().then(processText);
   };
 
   useEffect(() => {
-    // Scroll to the last message whenever messages array updates
+    // Scroll to the last userMwhenever messages array updates
     if (lastMessageRef.current) {
       lastMessageRef.current.scrollIntoView({ behavior: "smooth" });
     }
@@ -134,7 +166,7 @@ function Page() {
                   maxWidth: "75%", // Prevent message boxes from becoming too wide
                 }}
               >
-                {message.text}
+                <ReactMarkdown>{message.text}</ReactMarkdown>
               </div>
             </div>
           ))}
