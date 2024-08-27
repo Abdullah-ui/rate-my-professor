@@ -2,7 +2,7 @@
 import { useState } from "react";
 import SearchBar from "./SearchBar";
 
-function Header({ reviews }) {
+function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -30,7 +30,7 @@ function Header({ reviews }) {
           >
             chat
           </a>
-          <SearchBar isMenuOpen={false} reviews={reviews} />
+          <SearchBar isMenuOpen={false} />
         </nav>
         <div className="md:hidden">
           <button onClick={toggleMenu} className="text-3xl focus:outline-none">

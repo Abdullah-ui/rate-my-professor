@@ -1,0 +1,34 @@
+[
+    {
+      "professor": {
+        "firstName": "Jane",
+        "lastName": "Doe"
+      },
+      "date": "2024-08-20",
+      "review": "Professor Doe's Data Structures class is well-structured and informative. She provides clear explanations and is always available for help during office hours. The workload is challenging but manageable, with weekly coding assignments that reinforce the material. Expect to spend significant time on projects, but it's worth it for the learning experience."
+    },
+    {
+      "professor": {
+        "firstName": "Michael",
+        "lastName": "Smith"
+      },
+      "date": "2024-08-22",
+      "review": "Professor Smith's Introduction to Algorithms course is intense but rewarding. The lectures are fast-paced, and he covers a lot of material, so staying on top of the readings is crucial. The problem sets are difficult, but they are great for solidifying concepts. Be prepared for a heavy workload, especially around midterms and finals."
+    },
+    {
+      "professor": {
+        "firstName": "Emily",
+        "lastName": "Johnson"
+      },
+      "date": "2024-08-24",
+      "review": "Professor Johnson's Software Engineering class is highly practical, with a strong emphasis on real-world applications. The group projects are the most time-consuming part, but they are very well-organized and simulate actual software development environments. The lectures provide a solid foundation, but the real learning happens in the hands-on work."
+    },
+    {
+      "professor": {
+        "firstName": "Robert",
+        "lastName": "Williams"
+      },
+      "date": "2024-08-18",
+      "review": "In Professor Williams' Database Systems course, you'll dive deep into the theory and practice of database management. His lectures are detailed, and he expects a lot from his students. The projects are challenging and require a strong understanding of SQL and database design. The workload is heavy, but the knowledge gained is invaluable."
+    }
+  ]

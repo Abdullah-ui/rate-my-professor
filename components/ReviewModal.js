@@ -1,6 +1,6 @@
 import { FaRegWindowClose } from "react-icons/fa";
 import { firestore } from "@/firebase";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, doc, setDoc } from "firebase/firestore";
 import { useState } from "react";
 
 function ReviewModal({ closeModal }) {
