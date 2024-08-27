@@ -1,18 +1,19 @@
 "use client";
 import Header from "@/components/Header";
 import React, { useState, useEffect, useRef } from "react";
-import ReactMarkdown from 'react-markdown';
+import ReactMarkdown from "react-markdown";
 
 function Page() {
   const [inputValue, setInputValue] = useState("");
-  const [isTagged, setIsTagged] = useState(false); // State to track if main is tagged
+  const [isTagged, setIsTagged] = useState(false);
   const [messages, setMessages] = useState([
     {
-      role: 'assistant',
-      content: `Hi! I'm the Rate My Professor support assistant. How can I help you today?`,
+      role: "assistant",
+      text: `Hi! I'm the Rate My Professor support assistant. How can I help you today?`,
     },
-  ]); // State to store user and bot messages
-  const lastMessageRef = useRef(null); // Ref to keep track of the last message
+  ]);
+  const [isBotResponding, setIsBotResponding] = useState(false); // New state for tracking bot response
+  const lastMessageRef = useRef(null);
 
   const handleButtonClick = (prompt) => {
     // Remove leading and trailing quotation marks
@@ -47,50 +48,57 @@ function Page() {
     ]);
 
     setInputValue(""); // Clear the input field
-
+    setIsBotResponding(true);
     // Simulate bot response (replace this with actual bot logic)
     const botResponse = await generateBotResponse(userMessage);
 
-    // Add bot's response to the conversation
-    setMessages((prevMessages) => [
-      ...prevMessages,
-      { type: "assistant", text: botResponse},
-    ]);
+    setTimeout(() => {
+      // Add bot's response to the conversation
+      setMessages((prevMessages) => [
+        ...prevMessages,
+        { type: "assistant", text: botResponse },
+      ]);
+
+      setIsBotResponding(false); // Re-enable the submit button
+    }, 1000);
   };
 
   const generateBotResponse = async (userMessage) => {
     // Generate a response based on the user's message
-    const response = await fetch('/api/chat', {
-      method: 'POST',
+    const response = await fetch("/api/chat", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify([...messages, { role: 'user', content: userMessage }]),
+      body: JSON.stringify([
+        ...messages,
+        { role: "user", content: userMessage },
+      ]),
     });
-  
+
     const reader = response.body.getReader();
     const decoder = new TextDecoder();
-    let result = '';
-  
+    let result = "";
+
     const processText = async ({ done, value }) => {
       if (done) {
         console.log(result);
         return result; // Return the accumulated text when done
       }
-  
+
       const text = decoder.decode(value || new Uint8Array(), { stream: true });
       result += text;
-  
+
       // Continue reading the stream
       return reader.read().then(processText);
     };
-  
+
     // Start reading the stream and return the final result
     return reader.read().then(processText);
   };
 
   useEffect(() => {
-    // Scroll to the last userMwhenever messages array updates
+    // Scroll to the last user message whenever messages array updates
     if (lastMessageRef.current) {
       lastMessageRef.current.scrollIntoView({ behavior: "smooth" });
     }
@@ -135,12 +143,12 @@ function Page() {
 
         {/* Messages Area */}
         <div
-          className="w-full p-4 lg:max-w-3xl bg-white rounded-md shadow-md text-black"
+          className="w-full p-4 lg:max-w-3xl bg-white rounded-md text-black"
           style={{
             marginTop: "10px",
-            maxHeight: "420px", // Set a max-height for the messages container
-            overflowY: "auto", // Enable vertical scrolling if content exceeds max-height
-            overflowX: "hidden", // Prevent horizontal scrolling
+            maxHeight: "420px",
+            overflowY: "auto",
+            overflowX: "hidden",
           }}
         >
           {messages.map((message, index) => (
@@ -150,9 +158,9 @@ function Page() {
                 message.type === "user" ? "justify-end" : "justify-start"
               }`}
               style={{
-                marginBottom: "10px", // Add margin between messages
+                marginBottom: "10px",
               }}
-              ref={index === messages.length - 1 ? lastMessageRef : null} // Assign ref to the last message
+              ref={index === messages.length - 1 ? lastMessageRef : null}
             >
               <div
                 className={`p-3 rounded-md ${
@@ -161,9 +169,9 @@ function Page() {
                     : "bg-gray-200 text-left"
                 }`}
                 style={{
-                  wordBreak: "break-word", // Ensure long words break correctly
-                  overflowWrap: "break-word", // Break long words and URLs
-                  maxWidth: "75%", // Prevent message boxes from becoming too wide
+                  wordBreak: "break-word",
+                  overflowWrap: "break-word",
+                  maxWidth: "75%",
                 }}
               >
                 <ReactMarkdown>{message.text}</ReactMarkdown>
@@ -195,7 +203,12 @@ function Page() {
                   {/* Submit Button with Left Arrow Icon */}
                   <button
                     type="submit"
-                    className="absolute p-2 rounded-md text-white bg-black bottom-1.5 right-1 md:bottom-1.5 md:right-2 hover:bg-gray-700"
+                    className={`absolute p-2 rounded-md text-white bottom-1.5 right-1 md:bottom-1.5 md:right-2 ${
+                      isBotResponding
+                        ? "bg-gray-400 cursor-not-allowed"
+                        : "bg-black hover:bg-gray-700"
+                    }`}
+                    disabled={isBotResponding} // Disable the button while bot is responding
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
